@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-
+    {# gestion de name, name2 et myage #}
     <h1>{{ name }}</h1>
     <h2>{{ name2 }}</h2>
     {% if myage >= 25 %}
@@ -22,20 +22,35 @@
         <h6 style="color:purple;">l'age = {{ myage }}</h6>
     {% endif %}
 
-
-
+    {# foreach du myPrenoms #}
     {% for prenom, age in myPrenoms %}
-        <div>
-            <h1>Prénom: {{ prenom }}</h1>
-            <h3>Age: {{ age }} ans</h3>
-        </div>
+
+            <div>
+                {% if loop.first %}
+                    <h1 style="color:purple;">la 1ère</h1>
+                {% elseif loop.last %}
+                    <h1 style="color:green;">la dernière</h1>
+                {% endif %}
+
+                <h1>{{ loop.index }} / {{ loop.length }} - Prénom: {{ prenom }}</h1>
+                <h3>Age: {{ age }} ans</h3>
+            </div>
+
     {% endfor %}
 
+    {# boucle for simple #}
     <ul>
         {% for compteur in 0..10 %}
             <li>{{ compteur }}</li>
         {% endfor %}
     </ul>
+
+    {# set fait => $nom = "Berti" #}
+    {% set nom = "Berti" %}
+
+    <h1>Bonjour {{ nom }}</h1>
+
+    <a href="{{ path('app_test') }}">la page test</a>
 
 
 {% endblock %}
