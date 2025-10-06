@@ -4,9 +4,9 @@
 
 {% block stylesheets %}
     <style>
-        body{
+        /*body{
             background-color: gold;
-        }
+        }*/
     </style>
 {% endblock %}
 
@@ -23,20 +23,25 @@
     {% endif %}
 
     {# foreach du myPrenoms #}
-    {% for prenom, age in myPrenoms %}
+    <div class="row">
+        {% for prenom, age in myPrenoms %}
 
-            <div>
-                {% if loop.first %}
-                    <h1 style="color:purple;">la 1ère</h1>
-                {% elseif loop.last %}
-                    <h1 style="color:green;">la dernière</h1>
-                {% endif %}
+                <div class="col-md-4 my-3">
+                    <div class="card">
+                        {% if loop.first %}
+                            <h1 style="color:purple;">la 1ère</h1>
+                        {% elseif loop.last %}
+                            <h1 style="color:green;">la dernière</h1>
+                        {% endif %}
 
-                <h1>{{ loop.index }} / {{ loop.length }} - Prénom: {{ prenom }}</h1>
-                <h3>Age: {{ age }} ans</h3>
-            </div>
+                        <h1>{{ loop.index }} / {{ loop.length }} - Prénom: {{ prenom }}</h1>
+                        <h3>Age: {{ age }} ans</h3>
+                    </div>
+                </div>
 
-    {% endfor %}
+        {% endfor %}
+
+    </div>
 
     {# boucle for simple #}
     <ul>
@@ -50,7 +55,7 @@
 
     <h1>Bonjour {{ nom }}</h1>
 
-    <a href="{{ path('app_test') }}">la page test</a>
+    <a href="{{ path('app_test') }}" class="btn btn-primary my-3">la page test</a>
 
 
 {% endblock %}
