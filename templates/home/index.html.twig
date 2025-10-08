@@ -64,6 +64,13 @@
     <h1>Contenu du block Jordan du controller: {{ controller_name }}</h1>
 {% endblock %}
 
+{% block javascripts %}
+    {# parent() permet de récup ce qu'il y a par défaut dans le block concerné dans le template de base #}
+    {{ parent() }}
+    <script>
+        console.log('Hello HomeController!');
+    </script>
+{% endblock %}
 
 
 {# un commentaire #}
